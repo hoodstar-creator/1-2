@@ -8008,21 +8008,34 @@ const {Axios: ip, AxiosError: lp, CanceledError: cp, isCancel: ap, CancelToken: 
             deep: !0
         });
         const Ue = g => [...g].sort( (m, T) => m - T);
-        function Be(g, m) {
-            let T = null;
-            if (m === "etc" && (T = (prompt("기타로 이동하는 사유를 입력하세요.") || "").trim(),
-            !T)) {
-                alert("사유를 입력해야 기타로 이동할 수 있습니다.");
-                return
+        function Be(g, m, savedReason) { // 3번째 재귀 호출용 파라미터 추가
+            let T = savedReason || null;
+
+            // [수정된 부분] 목적지가 "etc"(기타)이고, 아직 사유(T)가 없을 때
+            if (m === "etc" && !T) {
+                // index.html에 만들어둔 팝업창이 있으면 엽니다.
+                if (window.openEtcModal) {
+                    window.openEtcModal(g, m, function(inputReason) {
+                        // 사용자가 사유를 입력하고 '확인'을 누르면 다시 Be 함수를 실행합니다.
+                        Be(g, m, inputReason); 
+                    });
+                    return; // 여기서 멈추고 팝업 입력을 기다립니다.
+                } else {
+                    // 만약 팝업창 코드가 없으면 기본값으로 처리
+                    T = "기타 사유";
+                }
             }
+
+            // [원래 이동 로직]
             r.forEach(w => {
                 const P = O[w].indexOf(g);
                 P >= 0 && O[w].splice(P, 1)
-            }
-            ),
-            O[m].push(g),
-            m === "etc" && T ? ne[g] = T : ne[g] && delete ne[g],
-            D()
+            });
+            O[m].push(g);
+            
+            // 사유 저장 로직
+            m === "etc" && T ? ne[g] = T : ne[g] && delete ne[g];
+            D();
         }
         function De() {
             const g = Array.from(new Set(r.flatMap(T => O[T]))).sort( (T, w) => T - w)
