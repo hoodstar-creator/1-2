@@ -7841,7 +7841,7 @@ const {Axios: ip, AxiosError: lp, CanceledError: cp, isCancel: ap, CancelToken: 
             room: "교실",
             after: "방과후",
             club: "동아리",
-            hall: "조기입실 / 지연귀교 / 결석",
+            hall: "조기입실 / 결석",
             restroom: "화장실/정수기",
             etc: "기타"
         }
@@ -8452,3 +8452,4 @@ const {Axios: ip, AxiosError: lp, CanceledError: cp, isCancel: ap, CancelToken: 
   , Fl = iu(pf);
 Fl.use(sp);
 Fl.mount("#app");
+
