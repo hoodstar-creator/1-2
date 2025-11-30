@@ -187,11 +187,11 @@
             
             <p class="section-title">입력</p>
             <div class="input-wrapper">
-                <input type="text" id="custom-reason-input" class="modal-input" placeholder="사유를 입력하세요 (예: 병원)" autocomplete="off">
+                <input type="text" id="custom-reason-input" class="modal-input" placeholder="사유를 입력하세요 (예: 병원, 외출)" autocomplete="off">
             </div>
 
             <div id="recent-reasons-container" style="display: none;">
-                <p class="sub-label">최근 사용 / 고정</p>
+                <p class="sub-label">최근 사용</p>
                 <div id="recent-reasons-list" class="chip-container"></div>
             </div>
 
@@ -337,11 +337,12 @@
             { loc: "", name: "303호" },
             { loc: "", name: "304호" },
             { loc: "", name: "305호" },
+            { loc: "", name: "306호" },
+            { loc: "", name: "307호" },
             { loc: "본관2층", name: "201호" },
             { loc: "", name: "202호" },
             { loc: "", name: "203호" },
             { loc: "", name: "회계실무실습실" },
-            { loc: "", name: "광고콘텐츠제작실습실" },
             { loc: "", name: "광고콘텐츠제작실습실" },
             { loc: "본관1층", name: "비즈쿨실" },
             { loc: "신관1층", name: "세미나실" },
@@ -358,7 +359,7 @@
 
         const RECENT_REASONS_KEY = 'my_recent_reasons'; 
         const FIXED_REASONS = ['지연귀교', '외출'];
-        const BLACKLIST_KEYWORDS = ['도티','공룡','띠또','잠뜰','쵸쵸우','코아','샌드박스','칠각별','각별'];
+        const BLACKLIST_KEYWORDS = ['도티','공룡','띠또','잠뜰','쵸쵸우','코아','샌드박스','칠각별','각별','수현'];
 
         function getRecentReasons() {
             const json = localStorage.getItem(RECENT_REASONS_KEY);
@@ -498,6 +499,7 @@
         }
     </style>
 </html>
+
 
 
 
